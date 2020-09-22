@@ -12,7 +12,6 @@ notifications:
       - cris.mtxz@gmail.com
 
 install:
-  - mvn -N io.takari:maven:wrapper
-  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
   - mvn verify
