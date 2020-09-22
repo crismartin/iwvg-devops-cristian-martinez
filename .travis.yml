@@ -7,6 +7,7 @@ branches:
     - master
 
 notifications:
+  slack: crismtxz:WljrnUn3pDNxxKOMJbpNoRAu
   email:
     recipients:
       - cris.mtxz@gmail.com
