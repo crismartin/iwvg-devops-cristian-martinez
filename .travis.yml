@@ -9,6 +9,5 @@ notifications:
   email:
     recipients:
       - cris.mtxz@gmail.com
-install:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  -
+script:
+  - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
