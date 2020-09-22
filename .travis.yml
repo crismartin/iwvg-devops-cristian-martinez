@@ -5,9 +5,14 @@ branches:
     - develop
     - "/^release-[0-999].[0-999]$/"
     - master
+
 notifications:
   email:
     recipients:
       - cris.mtxz@gmail.com
+
+install:
+  - mvn -N io.takari:maven:wrapper
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
+  - mvn verify
