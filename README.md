@@ -6,7 +6,7 @@
 ### Estado del código
 [![Build Status](https://travis-ci.org/crismartin/iwvg-devops-cristian-martinez.svg?branch=develop)](https://travis-ci.org/crismartin/iwvg-devops-cristian-martinez)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Aiwvg-devops-cristian-martinez&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Aiwvg-devops-cristian-martinez)
-[![BCH compliance](https://bettercodehub.com/edge/badge/crismartin/iwvg-devops-cristian-martinez?branch=develop)](https://bettercodehub.com/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/crismartin/iwvg-devops-cristian-martinez?branch=develop)](https://bettercodehub.com/results/crismartin/iwvg-devops-cristian-martinez)
 [![Heroku broken](https://iwvg-devops-cristian-martinez.herokuapp.com/system/version-badge)](https://iwvg-devops-cristian-martinez.herokuapp.com/swagger-ui.html)
 
 ### :gear: Instalación del proyecto
