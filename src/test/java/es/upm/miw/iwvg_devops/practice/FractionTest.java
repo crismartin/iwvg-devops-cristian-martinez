@@ -51,29 +51,39 @@ public class FractionTest {
     }
 
     @Test
-    void testIsProper(){
+    void testIsProper() {
         boolean isProper = numerator < denominator;
         assertEquals(isProper, fraction.isProper());
     }
 
     @Test
-    void testIsIproper(){
+    void testIsIproper() {
         boolean isImproper = numerator > denominator;
         assertEquals(isImproper, fraction.isImproper());
     }
 
     @Test
-    void testMultiply(){
-        double resultAuxTest = (double) fraction.getNumerator() * otherFraction.getNumerator() / fraction.getDenominator() * otherFraction.getDenominator();
-        double resultMultiply = fraction.mutiply(otherFraction);
-        assertEquals(resultAuxTest, resultMultiply);
+    void testIsEquivalent() {
+        boolean result = fraction.getNumerator() * otherFraction.getDenominator() == otherFraction.getNumerator() * fraction.getDenominator();
+        assertEquals(result, fraction.isEquivalent(otherFraction));
     }
 
     @Test
-    void testDivide(){
-        double resultAuxTest = (double) fraction.getNumerator() * otherFraction.getDenominator() / fraction.getDenominator() * otherFraction.getNumerator();
-        double resultMultiply = fraction.divide(otherFraction);
-        assertEquals(resultAuxTest, resultMultiply);
+    void testMultiply() {
+        int resultNumerator = fraction.getNumerator() * otherFraction.getNumerator();
+        int resultDenominator = fraction.getDenominator() * otherFraction.getDenominator();
+        Fraction result = fraction.mutiply(otherFraction);
+        assertEquals(resultNumerator, result.getNumerator());
+        assertEquals(resultDenominator, result.getDenominator());
+    }
+
+    @Test
+    void testDivide() {
+        int resultNumerator = fraction.getNumerator() * otherFraction.getDenominator();
+        int resultDenominator = fraction.getDenominator() * otherFraction.getNumerator();
+        Fraction result = fraction.divide(otherFraction);
+        assertEquals(resultNumerator, result.getNumerator());
+        assertEquals(resultDenominator, result.getDenominator());
     }
 
     @Test

@@ -72,12 +72,18 @@ public class Fraction {
         return (this.numerator * otherFraction.denominator == otherFraction.numerator * this.denominator);
     }
 
-    public double mutiply(Fraction otherFraction) {
-        return (double) this.numerator * otherFraction.numerator / this.denominator * otherFraction.denominator;
+    public Fraction mutiply(Fraction otherFraction) {
+        int multiplyNumerators = this.numerator * otherFraction.numerator;
+        int multiplyDenominators = this.denominator * otherFraction.denominator;
+        return new Fraction(multiplyNumerators, multiplyDenominators);
     }
 
-    public double divide(Fraction otherFraction) {
-        return (double) this.numerator * otherFraction.denominator / this.denominator * otherFraction.numerator;
+    public Fraction invert(){
+        return new Fraction(this.denominator, this.numerator);
+    }
+
+    public Fraction divide(Fraction otherFraction) {
+        return mutiply(otherFraction.invert());
     }
 
     @Override
