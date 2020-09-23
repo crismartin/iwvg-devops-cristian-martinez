@@ -60,6 +60,26 @@ public class Fraction {
         return (double) numerator / denominator;
     }
 
+    public boolean isProper() {
+        return numerator < denominator;
+    }
+
+    public boolean isImproper() {
+        return !this.isProper();
+    }
+
+    public boolean isEquivalent(Fraction otherFraction) {
+        return (this.numerator * otherFraction.denominator == otherFraction.numerator * this.denominator);
+    }
+
+    public double mutiply(Fraction otherFraction) {
+        return (double) this.numerator * otherFraction.numerator / this.denominator * otherFraction.denominator;
+    }
+
+    public double divide(Fraction otherFraction) {
+        return (double) this.numerator * otherFraction.denominator / this.denominator * otherFraction.numerator;
+    }
+
     @Override
     public String toString() {
         return "Fraction{" +
