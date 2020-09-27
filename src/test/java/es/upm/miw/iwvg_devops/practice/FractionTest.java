@@ -87,6 +87,24 @@ public class FractionTest {
     }
 
     @Test
+    void testAddNoEquiv() {
+        Fraction resultExpected = new Fraction(17, 14);
+        Fraction resultFunc = fraction.add(otherFraction);
+        assertEquals(resultExpected.getNumerator(), resultFunc.getNumerator());
+        assertEquals(resultExpected.getDenominator(), resultFunc.getDenominator());
+    }
+
+    @Test
+    void testAddEquiv() {
+        Fraction resultExpected = new Fraction(4, 4);
+        int factor = 2;
+        Fraction equivFraction = new Fraction(fraction.getNumerator() * factor, fraction.getDenominator() * factor);
+        Fraction resultFunc = fraction.add(equivFraction);
+        assertEquals(resultExpected.getNumerator(), resultFunc.getNumerator());
+        assertEquals(resultExpected.getDenominator(), resultFunc.getDenominator());
+    }
+
+    @Test
     void testToString() {
         String resultString = "Fraction{" +
                 "numerator=" + numerator +

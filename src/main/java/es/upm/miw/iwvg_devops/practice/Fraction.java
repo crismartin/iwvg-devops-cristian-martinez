@@ -69,21 +69,58 @@ public class Fraction {
     }
 
     public boolean isEquivalent(Fraction otherFraction) {
+        assert this.denominator != 0 && otherFraction != null && otherFraction.denominator != 0;
         return (this.numerator * otherFraction.denominator == otherFraction.numerator * this.denominator);
     }
 
     public Fraction mutiply(Fraction otherFraction) {
+        assert this.denominator != 0 && otherFraction != null && otherFraction.denominator != 0;
         int multiplyNumerators = this.numerator * otherFraction.numerator;
         int multiplyDenominators = this.denominator * otherFraction.denominator;
         return new Fraction(multiplyNumerators, multiplyDenominators);
     }
 
-    public Fraction invert(){
+    private Fraction invert() {
         return new Fraction(this.denominator, this.numerator);
     }
 
     public Fraction divide(Fraction otherFraction) {
         return mutiply(otherFraction.invert());
+    }
+
+    private static int restBetweenNums(int numA, int numB) {
+
+        int gt = Math.max(numA, numB);
+        int lt = Math.min(numA, numB);
+
+        return gt % lt;
+    }
+
+    private static int lcm(Fraction fractionA, Fraction fractionB) {
+        int result;
+        assert fractionA != null && fractionA.denominator != 0 && fractionB != null && fractionB.denominator != 0;
+
+        if (fractionA.isEquivalent(fractionB) || restBetweenNums(fractionA.denominator, fractionB.denominator) == 0) {
+            result = Math.max(fractionA.denominator, fractionB.denominator);
+        } else {
+            result = fractionA.denominator * fractionB.denominator;
+        }
+
+        return result;
+    }
+
+    public Fraction add(Fraction otherFraction) {
+        Fraction result = new Fraction();
+        int lcm;
+        int numeratorResult;
+        assert this.denominator != 0 && otherFraction != null && otherFraction.denominator != 0;
+
+        lcm = lcm(this, otherFraction);
+        numeratorResult = this.numerator * (lcm / this.denominator) + otherFraction.numerator * (lcm / otherFraction.denominator);
+        result.setNumerator(numeratorResult);
+        result.setDenominator(lcm);
+
+        return result;
     }
 
     @Override
