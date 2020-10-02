@@ -69,12 +69,10 @@ public class Fraction {
     }
 
     public boolean isEquivalent(Fraction otherFraction) {
-        assert this.denominator != 0 && otherFraction != null && otherFraction.denominator != 0;
         return (this.numerator * otherFraction.denominator == otherFraction.numerator * this.denominator);
     }
 
     public Fraction mutiply(Fraction otherFraction) {
-        assert this.denominator != 0 && otherFraction != null && otherFraction.denominator != 0;
         int multiplyNumerators = this.numerator * otherFraction.numerator;
         int multiplyDenominators = this.denominator * otherFraction.denominator;
         return new Fraction(multiplyNumerators, multiplyDenominators);
@@ -98,7 +96,6 @@ public class Fraction {
 
     private static int lcm(Fraction fractionA, Fraction fractionB) {
         int result;
-        assert fractionA != null && fractionA.denominator != 0 && fractionB != null && fractionB.denominator != 0;
 
         if (fractionA.isEquivalent(fractionB) || restBetweenNums(fractionA.denominator, fractionB.denominator) == 0) {
             result = Math.max(fractionA.denominator, fractionB.denominator);
@@ -113,7 +110,10 @@ public class Fraction {
         Fraction result = new Fraction();
         int lcm;
         int numeratorResult;
-        assert this.denominator != 0 && otherFraction != null && otherFraction.denominator != 0;
+
+        if (this.denominator == 0 || otherFraction.denominator == 0) {
+            return null;
+        }
 
         lcm = lcm(this, otherFraction);
         numeratorResult = this.numerator * (lcm / this.denominator) + otherFraction.numerator * (lcm / otherFraction.denominator);
