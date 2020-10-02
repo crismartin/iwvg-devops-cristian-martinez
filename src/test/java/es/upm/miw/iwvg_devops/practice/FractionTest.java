@@ -1,20 +1,26 @@
 package es.upm.miw.iwvg_devops.practice;
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class FractionTest {
     int numerator = 1;
     int denominator = 2;
     private Fraction fraction;
     private Fraction otherFraction;
+    private Fraction fractionInf;
+    private Fraction fractionInd;
 
     @BeforeEach
     void before() {
         fraction = new Fraction(1, 2);
         otherFraction = new Fraction(5, 7);
+        fractionInf = new Fraction(1, 0);
+        fractionInd = new Fraction(0, 0);
     }
 
     @Test
@@ -51,13 +57,25 @@ public class FractionTest {
     }
 
     @Test
+    void testDecimalInf() {
+        double resultTest = Double.POSITIVE_INFINITY;
+        assertEquals(resultTest, fractionInf.decimal());
+    }
+
+    @Test
+    void testDecimalIndet() {
+        double resultTest = Double.NaN;
+        assertEquals(resultTest, fractionInd.decimal());
+    }
+
+    @Test
     void testIsProper() {
         boolean isProper = numerator < denominator;
         assertEquals(isProper, fraction.isProper());
     }
 
     @Test
-    void testIsIproper() {
+    void testIsImproper() {
         boolean isImproper = numerator > denominator;
         assertEquals(isImproper, fraction.isImproper());
     }
@@ -86,6 +104,7 @@ public class FractionTest {
         assertEquals(resultDenominator, result.getDenominator());
     }
 
+
     @Test
     void testAddNoEquiv() {
         Fraction resultExpected = new Fraction(17, 14);
@@ -105,6 +124,18 @@ public class FractionTest {
     }
 
     @Test
+    void testAddInf() {
+        Fraction equivFraction = fraction.add(fractionInf);
+        assertNull(equivFraction);
+    }
+
+    @Test
+    void testAddIndet() {
+        Fraction equivFraction = fraction.add(fractionInd);
+        assertNull(equivFraction);
+    }
+
+    @Test
     void testToString() {
         String resultString = "Fraction{" +
                 "numerator=" + numerator +
@@ -113,4 +144,5 @@ public class FractionTest {
 
         assertEquals(resultString, fraction.toString());
     }
+
 }
