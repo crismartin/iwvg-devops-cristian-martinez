@@ -40,6 +40,10 @@ public class Fraction {
         this(1, 1);
     }
 
+    public boolean isNegativeSign() {
+        return numerator * denominator < 0;
+    }
+
     public int getNumerator() {
         return numerator;
     }

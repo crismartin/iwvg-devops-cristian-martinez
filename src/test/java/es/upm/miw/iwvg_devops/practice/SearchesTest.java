@@ -9,8 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SearchesTest {
     @Test
-    void testFindUserFamilyNameInitialBySomeProperFraction(){
+    void testFindUserFamilyNameInitialBySomeProperFraction() {
         assertEquals(List.of("O.", "A.", "O.", "A."), new Searches().findUserFamilyNameInitialBySomeProperFraction()
+                .collect(Collectors.toList()));
+    }
+
+    @Test
+    void testFindUserFamilyNameByAllNegativeSignFractionDistinct() {
+        assertEquals(List.of(), new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct()
                 .collect(Collectors.toList()));
     }
 }

@@ -4,8 +4,7 @@ package es.upm.miw.iwvg_devops.practice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class FractionTest {
     int numerator = 1;
@@ -14,6 +13,7 @@ class FractionTest {
     private Fraction otherFraction;
     private Fraction fractionInf;
     private Fraction fractionInd;
+    private Fraction fractionNegativeSign;
 
     @BeforeEach
     void before() {
@@ -21,6 +21,7 @@ class FractionTest {
         otherFraction = new Fraction(5, 7);
         fractionInf = new Fraction(1, 0);
         fractionInd = new Fraction(0, 0);
+        fractionNegativeSign = new Fraction(-1, 5);
     }
 
     @Test
@@ -133,6 +134,11 @@ class FractionTest {
     void testAddIndet() {
         Fraction equivFraction = fraction.add(fractionInd);
         assertNull(equivFraction);
+    }
+
+    @Test
+    void testIsNegativeSign() {
+        assertTrue(fractionNegativeSign.isNegativeSign());
     }
 
     @Test
