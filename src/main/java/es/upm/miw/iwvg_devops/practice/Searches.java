@@ -1,5 +1,7 @@
 package es.upm.miw.iwvg_devops.practice;
 
+
+import java.util.Collection;
 import java.util.stream.Stream;
 
 public class Searches {
@@ -18,5 +20,17 @@ public class Searches {
                 .map(User::getFamilyName)
                 .distinct();
 
+    }
+
+    public Fraction findFirstProperFractionByUserId(String id) {
+        Fraction fraction;
+        fraction = new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId()))
+                .map(User::getFractions)
+                .flatMap(Collection::stream)
+                .filter(Fraction::isProper)
+                .findFirst()
+                .orElse(null);
+        return fraction;
     }
 }

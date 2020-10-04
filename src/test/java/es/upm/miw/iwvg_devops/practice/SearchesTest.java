@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SearchesTest {
     @Test
@@ -18,5 +18,15 @@ class SearchesTest {
     void testFindUserFamilyNameByAllNegativeSignFractionDistinct() {
         assertEquals(List.of(), new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct()
                 .collect(Collectors.toList()));
+    }
+
+    @Test
+    void testFindFirstProperFractionByUserId() {
+        String idUser = "2";
+        Fraction fractionFirstProper = new Fraction(-1, 5);
+        Fraction fractionTest = new Searches().findFirstProperFractionByUserId(idUser);
+        assertNotNull(fractionTest);
+        assertEquals(fractionFirstProper.getNumerator(), fractionTest.getNumerator());
+        assertEquals(fractionFirstProper.getDenominator(), fractionTest.getDenominator());
     }
 }
