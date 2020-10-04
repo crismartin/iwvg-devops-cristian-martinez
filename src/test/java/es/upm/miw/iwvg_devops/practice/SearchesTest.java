@@ -29,4 +29,20 @@ class SearchesTest {
         assertEquals(fractionFirstProper.getNumerator(), fractionTest.getNumerator());
         assertEquals(fractionFirstProper.getDenominator(), fractionTest.getDenominator());
     }
+
+    @Test
+    void testFindFractionAdditionByUserIdNullResult(){
+        String idUser = "6";
+        Fraction fractionTest = new Searches().findFractionAdditionByUserId(idUser);
+        assertNull(fractionTest);
+    }
+
+    @Test
+    void testFindFractionAdditionByUserIdNotNullResult(){
+        String idUser = "1";
+        Fraction fractionSum = new Fraction(3,1);
+        Fraction fractionTest = new Searches().findFractionAdditionByUserId(idUser);
+        assertEquals(fractionSum.getNumerator(), fractionTest.getNumerator());
+        assertEquals(fractionSum.getDenominator(), fractionTest.getDenominator());
+    }
 }
