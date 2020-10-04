@@ -33,4 +33,14 @@ public class Searches {
                 .orElse(null);
         return fraction;
     }
+
+    public Fraction findFractionAdditionByUserId(String id) {
+        return new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId()))
+                .map(User::getFractions)
+                .flatMap(Collection::stream)
+                .reduce(new Fraction(0, 1), (acum, nextFraction) -> (acum != null && nextFraction != null ? acum.add(nextFraction) : null)
+                );
+    }
+
 }
