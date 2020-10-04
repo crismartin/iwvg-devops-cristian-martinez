@@ -23,15 +23,13 @@ public class Searches {
     }
 
     public Fraction findFirstProperFractionByUserId(String id) {
-        Fraction fraction;
-        fraction = new UsersDatabase().findAll()
+        return new UsersDatabase().findAll()
                 .filter(user -> id.equals(user.getId()))
                 .map(User::getFractions)
                 .flatMap(Collection::stream)
                 .filter(Fraction::isProper)
                 .findFirst()
                 .orElse(null);
-        return fraction;
     }
 
     public Fraction findFractionAdditionByUserId(String id) {
